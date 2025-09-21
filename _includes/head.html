@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="{{ site.baseurl }}public/css/syntax.css">
   <link rel="stylesheet" href="{{ site.baseurl }}public/css/hyde.css">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-KY4SU+v...snip...==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ site.baseurl }}public/apple-touch-icon-144-precomposed.png">
@@ -26,4 +27,38 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+  <!-- MathJax-->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      displayAlign: "center",
+      displayIndent: "0em",
+      tex2jax: {
+        skipTags: ["script","noscript","style","textarea"],
+        inlineMath: [['$', '$'], ['`$', '$`'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['`$$', '$$`'], ['\\[', '\\]']]
+      }
+    });
+    MathJax.Hub.Register.LoadHook("[MathJax]/extensions/tex2jax.js", function () {
+      var TEX2JAX = MathJax.Extension.tex2jax;
+      TEX2JAX._createMathTag = TEX2JAX.createMathTag;
+      TEX2JAX.createMathTag = function (mode, tex) {
+        const math = this._createMathTag(mode, tex);
+        const code = math.parentNode;
+        if (code.nodeName === 'CODE' && code.childNodes.length <= 3) {
+          const span = document.createElement('mjx-span');
+          code.parentNode.replaceChild(span, code);
+          span.appendChild(math);
+        }
+        return math;
+      };
+    });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML" defer></script>
+    <style>
+      .MathJax_Display {
+          text-align: center !important;
+          margin: 1em 0;
+      }
+    </style>
 </head>

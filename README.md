@@ -116,3 +116,7 @@ Hyde has two branches, but only one is used for active development.
 Open sourced under the [MIT license](LICENSE.md).
 
 <3
+
+### testing locally
+bundle exec jekyll serve
+http://127.0.0.1:4000/

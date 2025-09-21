@@ -1,7 +1,9 @@
 <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
-      <h1>
+      <img src="{{ site.baseurl }}public/profile.png" alt="Profile" style="border-radius: 50%; width: 200px; margin: 0 auto 10px; display: block;" />
+    
+      <h1 style = "font-weight: normal;">
         <a href="{{ site.baseurl }}">
           {{ site.title }}
         </a>
@@ -15,22 +17,32 @@
       {% comment %}
         The code below dynamically generates a sidebar nav of pages with
         `layout: page` in the front-matter. See readme for usage.
-      {% endcomment %}
-
+      
       {% assign pages_list = site.pages %}
       {% for node in pages_list %}
         {% if node.title != null %}
-          {% if node.layout == "page" %}
+          {% if node.layout == "page" and node.hide != true%}
             <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">{{ node.title }}</a>
           {% endif %}
         {% endif %}
       {% endfor %}
-
+      {% endcomment %}
+      <a class="sidebar-nav-item" href="/projects">Projects</a>
+      <a class="sidebar-nav-item" href="/music">Music</a>
+      <a class="sidebar-nav-item" href="/contact">Contact</a>
+      {% comment %}      <a class="sidebar-nav-item" href="{{ site.github.repo }}/archive/v{{ site.version }}.zip">Download</a>
       <a class="sidebar-nav-item" href="{{ site.github.repo }}/archive/v{{ site.version }}.zip">Download</a>
       <a class="sidebar-nav-item" href="{{ site.github.repo }}">GitHub project</a>
       <span class="sidebar-nav-item">Currently v{{ site.version }}</span>
-    </nav>
+      {% endcomment %}
 
+
+      <a href="https://github.com/oldvalley49" target="_blank" aria-label="GitHub">
+        <i class="fab fa-github fa-lg"></i>
+      </a>
+      <a href="https://linkedin.com/in/tomoya-furutani-19a9882a9" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin fa-lg"></i>
+      </a>
     <p>&copy; {{ site.time | date: '%Y' }}. All rights reserved.</p>
   </div>
 </div>
