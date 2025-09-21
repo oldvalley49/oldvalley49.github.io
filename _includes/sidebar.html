@@ -1,40 +1,41 @@
 <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
-      <img src="{{ site.baseurl }}public/profile.png" alt="Profile" style="border-radius: 50%; width: 200px; margin: 0 auto 10px; display: block;" />
-    
-      <h1 style = "font-weight: normal;">
-        <a href="{{ site.baseurl }}">
+      <!-- Safe path for user or project sites -->
+      <img src="{{ '/public/profile.png' | relative_url }}" alt="Profile"
+           style="border-radius: 50%; width: 200px; margin: 0 auto 10px; display: block;" />
+
+      <h1 style="font-weight: normal;">
+        <!-- Home link -->
+        <a href="{{ '/' | relative_url }}">
           {{ site.title }}
         </a>
       </h1>
     </div>
 
     <nav class="sidebar-nav">
-      <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}">Home</a>
+      <!-- Active class for home -->
+      <a class="sidebar-nav-item{% if page.url == '/' %} active{% endif %}"
+         href="{{ '/' | relative_url }}">Home</a>
 
+      <!-- Auto nav (if you keep it) -->
       {% comment %}
-        The code below dynamically generates a sidebar nav of pages with
-        `layout: page` in the front-matter. See readme for usage.
-      
       {% assign pages_list = site.pages %}
       {% for node in pages_list %}
-        {% if node.title != null %}
-          {% if node.layout == "page" and node.hide != true%}
-            <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">{{ node.title }}</a>
-          {% endif %}
+        {% if node.title and node.layout == "page" and node.hide != true %}
+          <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}"
+             href="{{ node.url | relative_url }}">{{ node.title }}</a>
         {% endif %}
       {% endfor %}
       {% endcomment %}
-      <a class="sidebar-nav-item" href="/projects">Projects</a>
-      <a class="sidebar-nav-item" href="/music">Music</a>
-      <a class="sidebar-nav-item" href="/contact">Contact</a>
-      {% comment %}      <a class="sidebar-nav-item" href="{{ site.github.repo }}/archive/v{{ site.version }}.zip">Download</a>
-      <a class="sidebar-nav-item" href="{{ site.github.repo }}/archive/v{{ site.version }}.zip">Download</a>
-      <a class="sidebar-nav-item" href="{{ site.github.repo }}">GitHub project</a>
-      <span class="sidebar-nav-item">Currently v{{ site.version }}</span>
-      {% endcomment %}
 
+      <!-- Explicit links -->
+      <a class="sidebar-nav-item{% if page.url == '/projects/' %} active{% endif %}"
+         href="{{ '/projects/' | relative_url }}">Projects</a>
+      <a class="sidebar-nav-item{% if page.url == '/music/' %} active{% endif %}"
+         href="{{ '/music/' | relative_url }}">Music</a>
+      <a class="sidebar-nav-item{% if page.url == '/contact/' %} active{% endif %}"
+         href="{{ '/contact/' | relative_url }}">Contact</a>
 
       <a href="https://github.com/oldvalley49" target="_blank" aria-label="GitHub">
         <i class="fab fa-github fa-lg"></i>
@@ -42,6 +43,8 @@
       <a href="https://linkedin.com/in/tomoya-furutani-19a9882a9" target="_blank" aria-label="LinkedIn">
         <i class="fab fa-linkedin fa-lg"></i>
       </a>
+    </nav>
+
     <p>&copy; {{ site.time | date: '%Y' }}. All rights reserved.</p>
   </div>
 </div>

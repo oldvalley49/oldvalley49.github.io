@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Graph Signal Processing
-permalink: /posts/graph_signal_processing_p1/
+permalink: /posts/graph_signal_processing/
 hide: true
 ---
 

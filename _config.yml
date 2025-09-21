@@ -9,8 +9,8 @@ permalink:        pretty
 title:            Tomo Furutani
 tagline:          
 description:      
-url:              http://oldvalley49.github.io
-baseurl:          /
+url:              "http://oldvalley49.github.io"
+baseurl:          ""
 
 author:
   name:           'Tomo Furutani'
